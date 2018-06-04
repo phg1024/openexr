@@ -20,7 +20,7 @@ if (OPENEXR_BUILD_TESTS)
 ENABLE_TESTING()
 endif()
 
-# distro building 
+# distro building
 SET(CPACK_PACKAGE_VERSION_MAJOR "${OPENEXR_VERSION_MAJOR}")
 SET(CPACK_PACKAGE_VERSION_MINOR "${OPENEXR_VERSION_MINOR}")
 SET(CPACK_PACKAGE_VERSION_PATCH "${OPENEXR_VERSION_PATCH}")
@@ -88,7 +88,7 @@ CHECK_CXX_SOURCE_COMPILES (
 	"
 	int main()
 	{
-	 #if defined(__GNUC__) && defined(__SSE2__) 
+	 #if defined(__GNUC__) && defined(__SSE2__)
 		 int n   = 0;
 		 int eax = 0;
 		 int edx = 0;
@@ -128,7 +128,7 @@ ELSE ()
   FILE ( APPEND ${CMAKE_CURRENT_BINARY_DIR}/config/OpenEXRConfig.h "#define OPENEXR_IMF_HAVE_COMPLETE_IOMANIP 1\n" )
   FILE ( APPEND ${CMAKE_CURRENT_BINARY_DIR}/config/OpenEXRConfig.h "#define OPENEXR_IMF_HAVE_LARGE_STACK 1\n" )
 ENDIF()
-  
+
 IF (OPENEXR_NAMESPACE_VERSIONING)
     FILE ( APPEND ${CMAKE_CURRENT_BINARY_DIR}/config/OpenEXRConfig.h "#define OPENEXR_IMF_INTERNAL_NAMESPACE_CUSTOM 1\n")
     FILE ( APPEND ${CMAKE_CURRENT_BINARY_DIR}/config/OpenEXRConfig.h "#define OPENEXR_IMF_NAMESPACE Imf\n" )
@@ -160,11 +160,11 @@ FILE ( APPEND ${CMAKE_CURRENT_BINARY_DIR}/config/OpenEXRConfig.h "
 IF (HAVE_GCC_INLINE_ASM_AVX)
   FILE ( APPEND ${CMAKE_CURRENT_BINARY_DIR}/config/OpenEXRConfig.h "#define OPENEXR_IMF_HAVE_GCC_INLINE_ASM_AVX 1\n" )
 ENDIF()
-  
+
 IF (HAVE_SYSCONF_NPROCESSORS_ONLN)
   FILE ( APPEND ${CMAKE_CURRENT_BINARY_DIR}/config/OpenEXRConfig.h "#define OPENEXR_IMF_HAVE_SYSCONF_NPROCESSORS_ONLN 1\n" )
 ENDIF()
-  
+
 SET (OPENEXR_LIBSUFFIX "")
 SET (ILMBASE_LIBSUFFIX "")
 IF (OPENEXR_NAMESPACE_VERSIONING)
@@ -183,8 +183,9 @@ SET_TARGET_PROPERTIES ( IlmImf
   VERSION 22.0.0
   SOVERSION 22
   OUTPUT_NAME "IlmImf${OPENEXR_LIBSUFFIX}"
+  POSITION_INDEPENDENT_CODE ON
   )
-  
+
 ##########################
 # IlmImfUtil library
 ##########################
@@ -198,7 +199,7 @@ SET_TARGET_PROPERTIES ( IlmImfUtil
   OUTPUT_NAME "IlmImfUtil${OPENEXR_LIBSUFFIX}"
   )
 endif()
-  
+
 ##########################
 # Example Code
 ##########################
@@ -206,7 +207,7 @@ if (OPENEXR_BUILD_EXAMPLES)
 ADD_SUBDIRECTORY ( IlmImfExamples )
 endif()
 
-  
+
 ##########################
 # Tests
 ##########################
